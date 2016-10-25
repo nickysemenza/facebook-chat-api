@@ -366,7 +366,7 @@ function formatDeltaMessage(m){
 function formatMessage(m) {
   var originalMessage = m.message ? m.message : m;
   var obj = {
-    type: "message",
+    // type: "message",
     senderName: originalMessage.sender_name,
     senderID: originalMessage.sender_fbid.toString(),
     participantNames: (originalMessage.group_thread_info ? originalMessage.group_thread_info.participant_names : [originalMessage.sender_name.split(' ')[0]]),
@@ -378,14 +378,25 @@ function formatMessage(m) {
     messageID: originalMessage.mid ? originalMessage.mid.toString() : originalMessage.message_id,
     attachments: formatAttachment(originalMessage.attachments, originalMessage.attachmentIds, originalMessage.attachment_map, originalMessage.share_map),
     timestamp: originalMessage.timestamp,
-    timestampAbsolute: originalMessage.timestamp_absolute,
-    timestampRelative: originalMessage.timestamp_relative,
-    timestampDatetime: originalMessage.timestamp_datetime,
-    original: originalMessage,
+    // timestampAbsolute: originalMessage.timestamp_absolute,
+    // timestampRelative: originalMessage.timestamp_relative,
+    // timestampDatetime: originalMessage.timestamp_datetime,
+    // original: originalMessage,
+    source: originalMessage.source,
+    source_tags: originalMessage.source_tags,
+    tags: originalMessage.tags,
+    // is_unread: originalMessage.is_unread,
+    // is_forward: originalMessage.is_forward,
+    // is_sponsored: originalMessage.is_sponsored,
+    commerce_message_type: originalMessage.commerce_message_type,
+    customizations: originalMessage.customizations,
+    log_message_type: originalMessage.log_message_type,
+    log_message_data: originalMessage.log_message_data,
+    action_type: originalMessage.action_type,
   };
 
-  if(m.type === "pages_messaging") obj.pageID = m.realtime_viewer_fbid.toString();
-  obj.isGroup = obj.participantIDs.length > 2;
+  // if(m.type === "pages_messaging") obj.pageID = m.realtime_viewer_fbid.toString();
+  // obj.isGroup = obj.participantIDs.length > 2;
 
   return obj;
 }
