@@ -645,7 +645,8 @@ function formatThread(data) {
     canReply: data.can_reply,
     composerEnabled: data.composer_enabled,
     blockedParticipants: data.blocked_participants,
-    lastMessageID: data.last_message_id
+    lastMessageID: data.last_message_id,
+    numParticipants: data.participants.length + (data.former_participants ? data.former_participants.length : 0),
   };
 }
 
