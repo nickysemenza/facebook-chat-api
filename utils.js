@@ -335,7 +335,8 @@ function _formatAttachment(attachment1, attachment2) {
         duration: attachment1.metadata.duration,
       };
     default:
-      throw new Error("unrecognized attach_file `" + JSON.stringify(attachment1) + "`");
+      return attachment1;
+      //throw new Error("unrecognized attach_file `" + JSON.stringify(attachment1) + "`");
   }
 }
 
