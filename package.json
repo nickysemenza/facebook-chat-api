@@ -26,9 +26,6 @@
     "npmlog": "^1.2.0",
     "request": "^2.53.0"
   },
-  "engines": {
-    "node": ">=4.x"
-  },
   "devDependencies": {
     "mocha": "^2.2.5"
   }
