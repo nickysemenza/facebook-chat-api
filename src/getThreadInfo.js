@@ -30,7 +30,6 @@ module.exports = function(defaultFuncs, api, ctx) {
               error: "Could not retrieve thread Info."
             };
           }
-
           var threadData = resData.payload.threads[0];
           var userData = userRes[threadID];
 
@@ -48,6 +47,7 @@ module.exports = function(defaultFuncs, api, ctx) {
             emoji: threadData.custom_like_icon,
             nicknames: threadData.custom_nickname,
             color: threadData.custom_color,
+            lastReadTimestamp: threadData.last_read_timestamp,
           };
           callback(null, info);
 

@@ -2,7 +2,7 @@ var login = require('../index.js');
 var fs = require('fs');
 var assert = require('assert');
 
-var conf = JSON.parse(fs.readFileSync('test/test-config.json', 'utf8'));
+var conf = JSON.parse(process.env.testconfig || fs.readFileSync('test/test-config.json', 'utf8'));
 var credentials = {
   email: conf.user.email,
   password: conf.user.password,
@@ -226,7 +226,7 @@ describe('Login:', function() {
     listen(done, function (msg) {
       return msg.type === 'event' &&
         msg.logMessageType === 'log:unsubscribe' &&
-        msg.logMessageData.removed_participants.indexOf('fbid:' + id) > -1;
+        msg.logMessageData.removed_participants.indexOf(id) > -1;
     });
     api.removeUserFromGroup(id, groupChatID, checkErr(done));
   });
@@ -338,7 +338,6 @@ describe('Login:', function() {
         assert(getType(v.profilePicture) === "String");
         assert(getType(v.type) === "String");
         assert(v.hasOwnProperty("profileUrl"));  // This can be null if the account is disabled
-        assert(getType(v.vanity) === "String");
         assert(getType(v.isBirthday) === "Boolean");
       })
       done();
